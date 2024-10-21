@@ -7,7 +7,7 @@ const AuthInput = ({ state, setState, text, type, error, placeholder }) => {
   return (
     <div className="w-full h-auto flex   flex-col gap-1 justify-start items-start  ">
       <label className="ml-1 text-sm font-medium text-black capitalize">
-        {text}
+        {text} 
       </label>
       <div
         className={`w-full h-[52px] lg:w-[434px] focus-within:border-[1px] focus-within:border-[#55C9FA]   rounded-[12px] bg-[#F3F3F3] flex items-center justify-start  ${
