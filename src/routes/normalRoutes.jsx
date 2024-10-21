@@ -7,7 +7,7 @@ import StudentProfile from "../pages/Student/StudentProfile";
 import EventDetails from "../pages/Events/EventDetails";
 import Profile from "../pages/Profile/Profile";
 import Notifications from "../pages/Notifications/Notifications";
-import PrivacyPolicy from "../pages/Privacypolicy/Privacypolicy";
+import PrivacyPolicy from "../pages/Privacypolicy/PrivacyPolicy";
 import TermsOfService from "../pages/Termsandconditions/TermsOfService";
 import EditProfile from "../pages/Profile/EditProfile";
 import Splash from "../pages/onboarding/Splash";
