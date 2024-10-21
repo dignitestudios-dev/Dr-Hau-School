@@ -20,7 +20,7 @@ const AuthInput = ({ state, setState, text, type, error, placeholder }) => {
           <input
             type={isPassVisible ? "text" : type}
             placeholder={placeholder}
-            className="w-full outline-none bg-[#F3F3F3] rounded-[12px] placeholder:text-[13px] placeholder:font-normal placeholder:text-[#6B737E] text-black bg-transparent h-full px-3 text-sm font-medium "
+            className="w-full outline-none bg-[#F3F3F3] rounded-[13px] placeholder:text-[13px] placeholder:font-normal placeholder:text-[#6B737E] text-black bg-transparent h-full px-3 text-sm font-medium "
             value={state}
             onChange={(e) => setState(e.target.value)}
           />
