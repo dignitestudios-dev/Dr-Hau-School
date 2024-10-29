@@ -29,7 +29,7 @@ const PasswordUpdateModal = ({ isOpen, onRequestClose }) => {
         </div>
 
         <h2 className="text-xl md:text-2xl font-semibold text-[20px] md:text-[24px]">
-          Password Update Successfully
+          Password Updated Successfully
         </h2>
       </div>
     </Modal>

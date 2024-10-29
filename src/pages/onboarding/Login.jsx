@@ -72,21 +72,21 @@ const Login = () => {
         className="w-full lg:w-1/2 h-full bg-white p-8 lg:p-20 flex flex-col justify-start items-start gap-8"
       >
         <h1 className="text-left text-4xl font-bold text-black leading-[64.8px] tracking-[-1.2px]">
-          Log in
+          Log In
         </h1>
-        <div className="flex flex-col w-full h-auto justify-start items-start gap-4">
+        <div className="flex flex-col w-full lg:w-[432px] h-auto justify-start items-start gap-4">
           <AuthInput
             text={"Email"}
-            placeholder={"Type your email address here"}
+            placeholder={"Enter your email here"}
             type={"text"}
             setState={setEmail}
             state={email}
             error={emailError} 
           />
-          <div className="flex flex-col w-full lg:w-[434px] justify-start items-end gap-1">
+          <div className="flex flex-col w-full lg:w-[432px] justify-start items-end gap-1">
             <AuthInput
               text={"Password"}
-              placeholder={"Enter Password"}
+              placeholder={"Enter your password here"}
               type={"password"}
               setState={setPassword}
               state={password}
@@ -101,7 +101,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <AuthSubmitBtn text={loading ? "Logging in..." : "Log in"} disabled={loading} />
+        <AuthSubmitBtn text={loading ? "Logging In..." : "Log In"} disabled={loading} />
       </form>
 
       <div className="hidden lg:flex flex-col justify-center items-center w-1/2 h-full relative">

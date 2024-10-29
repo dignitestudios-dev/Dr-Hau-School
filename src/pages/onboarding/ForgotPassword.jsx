@@ -46,8 +46,8 @@ const ForgotPassword = () => {
           <BiArrowBack className="text-3xl text-black" />
         </button>
         <div className="w-full flex justify-start items-start flex-col">
-          <h1 className="text-[48px] font-bold text-black leading-[64.8px] tracking-[-1.2px]">
-            Forgot Password
+          <h1 className="text-[36px] font-bold text-black leading-[64.8px] tracking-[-1.2px]">
+            Forgot Password?
           </h1>
           <p className="w-[90%] font-normal text-[16px] text-black leading-[21.6px] tracking-[-1.2px]">
             Enter your email to reset your password and swiftly resume your experience.
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
         <div className="w-full h-auto flex flex-col justify-start items-start gap-4">
           <AuthInput
             text={"Email"}
-            placeholder={"Type your email here"}
+            placeholder={"Enter your email here"}
             type={"text"}
             setState={setEmail}
             state={email}

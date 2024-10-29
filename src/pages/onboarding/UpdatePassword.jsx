@@ -65,14 +65,14 @@ const UpdatePassword = () => {
         <div className="w-full h-auto flex flex-col justify-start items-start gap-4">
           <AuthInput
             text={"New Password"}
-            placeholder={"Enter Password"}
+            placeholder={"Enter your new password"}
             type={"password"}
             value={newPassword}
             setState={setNewPassword}
           />
           <AuthInput
             text={"Confirm Password"}
-            placeholder={"Enter Password"}
+            placeholder={"Enter your confirm password here"}
             type={"password"}
             value={confirmPassword}
             setState={setConfirmPassword}

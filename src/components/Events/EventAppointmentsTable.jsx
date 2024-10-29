@@ -57,11 +57,11 @@ const EventAppointmentsTable = ({ id }) => {
           <table className="min-w-full bg-white border-collapse">
             <thead>
               <tr className="text-left text-[14px] bg-[#F5F7F7] text-gray-500">
-                <th className="py-2 px-4">STUDENT</th>
+                <th className="py-2 rounded-l-lg px-4">STUDENT</th>
                 <th className="py-2 px-4">DATE OF BIRTH</th>
                 <th className="py-2 px-4">CAMPUS</th>
                 <th className="py-2 px-4">PROGRAM</th>
-                <th className="py-2 px-4">STATUS</th>
+                <th className="py-2 rounded-r-lg px-4">STATUS</th>
               </tr>
             </thead>
             <tbody>

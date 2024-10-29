@@ -82,14 +82,14 @@ const EventsTable = () => {
               <LoadingPlaceholder />
             </div>
           ) : (
-            <table className="min-w-full bg-white border-collapse">
+            <table className="w-full bg-white border-collapse">
               <thead>
-                <tr className="text-left text-[14px] bg-[#F5F7F7] text-gray-500">
-                  <th className="py-2 px-4">DATE</th>
+                <tr className="text-left text-[14px] rounded-lg bg-[#F5F7F7] text-gray-500">
+                  <th className="py-2 rounded-l-lg px-4">DATE</th>
                   <th className="py-2 px-4">VACCINATION</th>
                   <th className="py-2 px-4">TIME</th>
                   <th className="py-2 px-4">STATUS</th>
-                  <th className="py-2 px-4"></th>
+                  <th className="py-2 rounded-r-lg px-4"></th>
                 </tr>
               </thead>
               <tbody>
@@ -106,7 +106,7 @@ const EventsTable = () => {
                       </span>
                     </td>
                     <td onClick={() => navigate(`/event-details/${event?._id}`, { state: { event, userId: event?.user?._id } })} className="py-3 px-4 text-blue-500">
-                      <p className="cursor-pointer">View details</p>
+                      <p className="cursor-pointer underline">View details</p>
                     </td>
                   </tr>
                 ))}

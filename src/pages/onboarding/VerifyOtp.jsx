@@ -10,7 +10,6 @@ const VerifyOtp = () => {
   const [otp, setOtp] = useState(Array(4).fill(""));
   const [loading, setLoading] = useState(false);
   const [resendLoading,setResendLoading] = useState(false)
-  console.log(resendLoading)
   const [resendError, setResendError] = useState(null);
   const [error, setError] = useState(null);
   const [email, setEmail] = useState(""); 
@@ -34,6 +33,22 @@ const VerifyOtp = () => {
 
     if (value && index < otp.length - 1) {
       document.getElementById(`otp-input-${index + 1}`).focus();
+    }
+  };
+
+  const handleKeyDown = (index, event) => {
+    if (event.key === 'Backspace') {
+      if (otp[index] === '') {
+        if (index > 0) {
+          document.getElementById(`otp-input-${index - 1}`).focus();
+        }
+      } else {
+        setOtp((prev) => {
+          const newOtp = [...prev];
+          newOtp[index] = '';
+          return newOtp;
+        });
+      }
     }
   };
 
@@ -70,7 +85,7 @@ const VerifyOtp = () => {
 
     try {
       const response = await axios.post("/auth/sendPassOTP", { email });
-      console.log("OTP resend response:", response.data);
+      console.log("OTP resend response:", response?.data);
 
       // sessionStorage.setItem("email", email);
 
@@ -117,6 +132,7 @@ const VerifyOtp = () => {
               value={value}
               onChange={(e) => handleOtpChange(index, e.target.value)}
               onFocus={(e) => e.target.select()}
+              onKeyDown={(e) => handleKeyDown(index, e)}
             />
           ))}
         </div>
@@ -172,3 +188,4 @@ const VerifyOtp = () => {
 };
 
 export default VerifyOtp;
+

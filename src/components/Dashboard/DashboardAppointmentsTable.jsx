@@ -29,8 +29,8 @@ const DashboardAppointmentsTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-auto bg-white">
-      <div className="flex justify-between items-center mb-4">
+    <div className="w-full h-auto bg-white ">
+      <div className="flex justify-between items-center mb-4 ">
         <h3 className="text-[24px] font-bold text-black">Appointment List</h3>
         <p onClick={() => navigate("/appointments")} className="text-blue-500 text-sm underline cursor-pointer">See all</p>
       </div>
