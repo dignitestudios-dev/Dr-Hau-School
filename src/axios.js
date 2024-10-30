@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-export const baseUrl = 'http://3.134.75.96';
+export const baseUrl = 'https://backend.drhauclinic.com';
 
 const instance = axios.create({
   baseURL: baseUrl, 
