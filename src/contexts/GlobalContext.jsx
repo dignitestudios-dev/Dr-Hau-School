@@ -13,7 +13,7 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   return (
-    <GlobalContext.Provider value={{ activeLink, handleNavigation }}>
+    <GlobalContext.Provider value={{ activeLink, handleNavigation, navigate }}>
       {children}
     </GlobalContext.Provider>
   );
