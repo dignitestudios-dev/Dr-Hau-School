@@ -3,6 +3,7 @@ import axios from "../../axios";
 import ProfileCompleteModal from "../../components/onboarding/ProfileCompleteModal";
 import { ErrorToast, SuccessToast } from "../../components/global/Toaster";
 import { MdAddAPhoto } from "react-icons/md";
+import {Logo} from "../../assets/export";
 
 const ProfileSetup = () => {
   const [formData, setFormData] = useState({
@@ -119,7 +120,7 @@ const ProfileSetup = () => {
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-gray-100 px-4 sm:px-6">
       <div className="absolute top-4 left-4 sm:top-8 sm:left-8 hidden lg:block">
-        <h1 className="text-xl sm:text-3xl font-bold">Logo</h1>
+          <img src={Logo} alt="perfectboat_logo" className="h-24 mt-8" />
       </div>
       <div className="bg-white w-full h-auto sm:h-auto max-w-4xl sm:mt-8 mt-6 p-4 lg:p-10 sm:p-6 rounded-lg shadow-lg lg:ml-28 lg:h-[600px]">
         <div className="lg:flex lg:items-center lg:justify-start mb-4 sm:mb-6">
