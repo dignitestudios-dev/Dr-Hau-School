@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { FaCheck } from "react-icons/fa6";
 import { IoMdClose } from 'react-icons/io';
+import { useHistory } from 'react-router-dom'; // or 'useNavigate' for react-router v6
 
 const PasswordUpdateModal = ({ isOpen, onRequestClose }) => {
+  const history = useHistory(); // or useNavigate for react-router v6
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        // Redirect to /login after 2 seconds
+        history.push('/login'); // Or use `navigate('/login')` if you're using react-router v6
+      }, 2000);
+
+      // Cleanup the timer if the modal is closed before the timeout
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, history]);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -20,8 +35,6 @@ const PasswordUpdateModal = ({ isOpen, onRequestClose }) => {
           <IoMdClose className="text-2xl" />
         </button>
 
-        
-        
         <div className="flex justify-center items-center mb-4">
           <div className="rounded-full bg-[#000505] p-4 flex items-center justify-center">
             <FaCheck className="text-[#D0FCB3] text-4xl" />
