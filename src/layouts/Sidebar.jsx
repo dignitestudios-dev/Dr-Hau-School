@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../assets/export";
-// import { sidebarArr } from "../constants/sidebarArr";
 import SidebarLink from "./SidebarLink";
 import { RiLogoutCircleLine, RiMenuLine } from "react-icons/ri";
 import { sidebarArr } from "../constants/sidebarArr";
-import axios from '../axios'; // Adjust the import according to your file structure
+import axios from '../axios'; // Your axios instance
+import LogoutModal from "../components/onboarding/LogoutModal";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -19,19 +20,16 @@ const Sidebar = () => {
     setIsDrawerOpen(false);
   };
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post('/auth/logout');
-      if (response.data.success) {
-        localStorage.clear(); // Clear local storage on successful logout
-        navigate("/login"); // Redirect to login page
-      } else {
-        // Handle logout failure if needed
-        console.error("Logout failed:", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
+  const handleLogoutModalOpen = () => {
+    setIsLogoutModalOpen(true); // Open the logout modal
+  };
+
+  const handleLogoutModalClose = () => {
+    setIsLogoutModalOpen(false); // Close the logout modal
+  };
+
+  const handleLogoutSuccess = () => {
+    navigate("/login"); // Redirect to login page after successful logout
   };
 
   return (
@@ -46,10 +44,9 @@ const Sidebar = () => {
       <div
         className={`fixed lg:static top-0 left-0 w-[280px] bg-black py-4 px-6 flex flex-col justify-start items-start transition-transform duration-300 ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 z-40 h-screen overflow-y-auto`}
       >
-        <Link to="/" className="">
-          <img src={Logo} alt="perfectboat_logo" className="h-24 mt-8" />
+        <Link to="/" className="mt-8">
+          <img src={Logo} alt="perfectboat_logo" className="h-24" />
         </Link>
-        {/* <h1 className="text-white mt-2.5 text-[40px] font-bold">Logo</h1> */}
 
         <div className="w-full mt-20 flex flex-col justify-start items-start gap-2">
           {sidebarArr?.map((link, index) => (
@@ -61,7 +58,7 @@ const Sidebar = () => {
           ))}
           <button
             onClick={() => {
-              handleLogout();
+              handleLogoutModalOpen(); // Open logout confirmation modal
               handleCloseDrawer();
             }}
             className="w-full h-[46px] outline-none rounded-[12px] bg-transparent text-white/50 font-medium flex items-center justify-start transition-all duration-500 hover:bg-[#D0FCB3] hover:text-black px-3 gap-2"
@@ -81,6 +78,13 @@ const Sidebar = () => {
           className="fixed inset-0 bg-black opacity-50 lg:hidden z-30"
         ></div>
       )}
+
+      {/* Logout Modal */}
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onRequestClose={handleLogoutModalClose}
+        onLogoutSuccess={handleLogoutSuccess} // Pass the logout success handler
+      />
     </div>
   );
 };
