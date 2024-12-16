@@ -6,6 +6,7 @@ import ForgotpasswordImage from "../assets/ForgotpasswordImage.png";
 import OnboardingImage from "../assets/OnboardingImage.png";
 import UpdatepasswordImage from "../assets/UpdatepasswordImage.png";
 import SplashImage from "../assets/SplashImage.png";
+import Logo from "../assets/Logo.png";
 
 
 
@@ -18,4 +19,5 @@ export {
     ForgotpasswordImage,
     OnboardingImage,
     UpdatepasswordImage,
+    Logo,
 };

@@ -4,7 +4,6 @@ import ProfileCompleteModal from "../../components/onboarding/ProfileCompleteMod
 import { ErrorToast, SuccessToast } from "../../components/global/Toaster";
 import { MdAddAPhoto } from "react-icons/md";
 
-
 const ProfileSetup = () => {
   const [formData, setFormData] = useState({
     schoolName: "",
@@ -17,12 +16,43 @@ const ProfileSetup = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [apiError, setApiError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
+  
+  const [campuses, setCampuses] = useState([]); // Dynamic campuses list
 
   const fileInputRef = useRef(null); 
+
+  const schoolCampusData = {
+    "ACC": ["Los Angeles", "Ontario", "Orange County"],
+    "Annenberg": ["None"],
+    "Azusa Adult School": ["None"],
+    "CCC": ["Garden Grove", "North Hollywood", "San Bernardino", "San Diego"],
+    "CDI": ["None"],
+    "Claremont Adult School": ["None"],
+    "CNI OC": ["None"],
+    "College of the Desert": ["None"],
+    "Crafton Hills": ["None"],
+    "Fontana School District": ["None"],
+    "Glendale Career College": ["None"],
+    "Healthcare Career College": ["None"],
+    "Monrovia Adult School": ["None"],
+    "National Career College": ["None"],
+    "NDCI": ["None"],
+    "Northwest": ["Anaheim", "Long Beach", "Pomona", "Riverside", "San Diego", "Van Nuys", "West Covina"],
+    "Pacific College": ["None"],
+    "Platt": ["Alhambra", "Anaheim", "Ontario", "Riverside"],
+    "Smith Chason": ["None"],
+    "Unitek": ["Bakersfield", "Concord", "Fremont", "Hayward", "Reno", "Sacramento", "San Jose", "South San Francisco"]
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSchoolChange = (e) => {
+    const selectedSchool = e.target.value;
+    setFormData({ ...formData, schoolName: selectedSchool, campus: "" });
+    setCampuses(schoolCampusData[selectedSchool] || []); // Update campus options based on selected school
   };
 
   const handleFileChange = (e) => {
@@ -34,13 +64,25 @@ const ProfileSetup = () => {
     e.preventDefault();
     setApiError(null); 
 
+    // Validation to ensure all fields are filled
+    if (
+      !formData.schoolName ||
+      !formData.programDep ||
+      !formData.adminName ||
+      !formData.campus ||
+      !formData.profilePicture
+    ) {
+      ErrorToast("Please fill in all fields and upload a profile picture.");
+      return; // Prevent form submission if any required field is missing
+    }
+
     const data = new FormData();
     for (const key in formData) {
       data.append(key, formData[key]);
     }
 
     try {
-      const response = await axios.post('/school/complete', data, {
+      const response = await axios?.post('/school/complete', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -52,11 +94,7 @@ const ProfileSetup = () => {
       }
     } catch (error) {
       setApiError(error?.response?.data?.message);
-     // console.error("API error:", error?.response?.data?.message);
-      // console.error("API error:", error);
       ErrorToast(error?.response?.data?.message || "Please try again.");
-
-
     }
   };
 
@@ -108,15 +146,39 @@ const ProfileSetup = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col">
               <label className="mb-2 font-medium">School Name</label>
-              <input
-                type="text"
+              <select
                 name="schoolName"
-                value={formData?.schoolName}
+                value={formData.schoolName}
+                onChange={handleSchoolChange}
+                className="border border-black p-3 rounded-md"
+                required
+              >
+                <option value="">Select a School</option>
+                {Object.keys(schoolCampusData).map((school) => (
+                  <option key={school} value={school}>
+                    {school}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col">
+              <label className="mb-2 font-medium">Campus</label>
+              <select
+                name="campus"
+                value={formData.campus}
                 onChange={handleInputChange}
                 className="border border-black p-3 rounded-md"
-                placeholder="School Name"
                 required
-              />
+                disabled={!formData.schoolName} // Disable until school is selected
+              >
+                <option value="">Select a Campus</option>
+                {campuses.map((campus, index) => (
+                  <option key={index} value={campus}>
+                    {campus}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="flex flex-col">
@@ -141,19 +203,6 @@ const ProfileSetup = () => {
                 onChange={handleInputChange}
                 className="border border-black p-3 rounded-md"
                 placeholder="Program Department"
-                required
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="mb-2 font-medium">Campus</label>
-              <input
-                type="text"
-                name="campus"
-                value={formData.campus}
-                onChange={handleInputChange}
-                className="border border-black p-3 rounded-md"
-                placeholder="Campus"
                 required
               />
             </div>

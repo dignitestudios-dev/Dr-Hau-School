@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { Logo } from "../assets/export";
+import { Logo } from "../assets/export";
 // import { sidebarArr } from "../constants/sidebarArr";
 import SidebarLink from "./SidebarLink";
 import { RiLogoutCircleLine, RiMenuLine } from "react-icons/ri";
@@ -46,10 +46,10 @@ const Sidebar = () => {
       <div
         className={`fixed lg:static top-0 left-0 w-[280px] bg-black py-4 px-6 flex flex-col justify-start items-start transition-transform duration-300 ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 z-40 h-screen overflow-y-auto`}
       >
-        {/* <Link to="/" className="">
-          <img src={Logo} alt="perfectboat_logo" className=" " />
-        </Link> */}
-        <h1 className="text-white mt-2.5 text-[40px] font-bold">Logo</h1>
+        <Link to="/" className="">
+          <img src={Logo} alt="perfectboat_logo" className="h-24 mt-8" />
+        </Link>
+        {/* <h1 className="text-white mt-2.5 text-[40px] font-bold">Logo</h1> */}
 
         <div className="w-full mt-20 flex flex-col justify-start items-start gap-2">
           {sidebarArr?.map((link, index) => (
