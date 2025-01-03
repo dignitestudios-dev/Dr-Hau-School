@@ -52,8 +52,8 @@ const EventDetail = () => {
         {activeTab === 'details' ? (
           <div>
             <h4 className="text-[20px] font-bold text-black mb-4">
-              Vaccination Appointment 
-              <span className={`bg-${eventDetail?.event?.status === "Upcoming" ? "orange" : eventDetail?.event?.status === "Completed" ? "green" : "red"}-500 text-white px-3 py-2 text-[12px] rounded-full ml-2`}>
+            {eventDetail?.event?.title}
+            <span className={`bg-${eventDetail?.event?.status === "upcoming" ? "orange" : eventDetail?.event?.status === "completed" ? "green" : "red"}-500 text-white px-3 py-2 text-[12px] rounded-full ml-2`}>
                 {eventDetail?.event?.status}
               </span>
             </h4>

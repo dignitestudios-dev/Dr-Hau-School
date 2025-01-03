@@ -14,6 +14,7 @@ import Splash from "../pages/onboarding/Splash";
 import ProfileSetup from "../pages/onboarding/ProfileSetup";
 import CookiePolicy from "../pages/CookiePolicy/CookiePolicy";
 import EventAppointmentDetails from "../pages/Events/EventAppointmentDetails";
+import ReportDetails from "../pages/Appointments/ReportDetails";
 
 
 export const normalRoutes = [
@@ -87,5 +88,15 @@ export const normalRoutes = [
       url: "/event-appointment-details",
       page: <GlobalLayout page={<EventAppointmentDetails />} />,
     },
+
+
+    {
+      title: "Report Details",
+      url: "/report-details/:appointmentId",
+      page: <GlobalLayout page={<ReportDetails />} />,
+    },
+
+    // <Route path="/report-details/:appointmentId" element={<ReportDetails />} />
+
 
 ]    

@@ -82,9 +82,14 @@ const EventAppointmentsTable = ({ id }) => {
                   <td className="py-3 px-4">{new Date(appointment?.user?.dob).toLocaleDateString()}</td>
                   <td className="py-3 px-4">{appointment?.user?.campus}</td>
                   <td className="py-3 px-4">{appointment?.user?.programAttended}</td>
-                  <td className={`py-3 px-4 ${appointment?.status === 'Scheduled' ? 'text-blue-500' : 'text-red-500'}`}>
-                    {appointment?.status}
-                  </td>
+                  <td className={`py-3 px-4 ${
+  appointment?.status === 'Scheduled' ? 'text-blue-500' : 
+  appointment?.status === 'completed' ? 'text-green-500' : 
+  'text-red-500'
+}`}>
+  {appointment?.status}
+</td>
+
                 </tr>
               ))}
             </tbody>
