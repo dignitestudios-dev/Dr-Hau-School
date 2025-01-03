@@ -292,6 +292,7 @@ const EventAppointmentDetails = () => {
          </div>
        
          {/* Drug Test Results */}
+         <p className="font-semibold text-[20px] text-black mb-4">Drug Report</p>
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-6">
            <div>
              <p className="text-[16px] text-[#787F8C] font-semibold uppercase">Benzodiazepines</p>
