@@ -24,8 +24,8 @@ const EditProfile = () => {
     e.preventDefault();
 
     const formDataToSend = new FormData();
-    formDataToSend.append('schoolName', formData?.schoolName);
-    formDataToSend.append('programDep', formData?.programDep);
+    // formDataToSend.append('schoolName', formData?.schoolName);
+    // formDataToSend.append('programDep', formData?.programDep);
     formDataToSend.append('adminName', formData?.adminName);
     formDataToSend.append('campus', formData?.campus);
     if (profilePicture) {
@@ -63,7 +63,7 @@ const EditProfile = () => {
         <h3 className="text-[24px] font-bold text-black">Edit Profile</h3>
       </div>
 
-      <div className="bg-white w-full h-auto sm:h-auto sm:mt-8 mt-6 p-4 lg:p-10 sm:p-6 rounded-lg shadow-lg lg:h-[550px] text-black">
+      <div className="bg-white w-full h-auto sm:h-auto sm:mt-8 mt-6 p-4 lg:p-10 sm:p-6 rounded-lg shadow-lg lg:h-[350px] text-black">
         <div className="lg:flex lg:items-center lg:justify-start mb-6">
           {imagePreview ? (
             <img
@@ -106,19 +106,7 @@ const EditProfile = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="flex flex-col">
-              <label className="mb-2 font-medium">School Name</label>
-              <input
-                type="text"
-                name="schoolName"
-                value={formData?.schoolName}
-                onChange={handleInputChange}
-                className="border border-black p-3 rounded-md"
-                placeholder="School Name"
-              />
-            </div>
-
-            <div className="flex flex-col">
+          <div className="flex flex-col">
               <label className="mb-2 font-medium">Administrator Name</label>
               <input
                 type="text"
@@ -141,8 +129,21 @@ const EditProfile = () => {
                 placeholder="Program Department"
               />
             </div>
+            {/* <div className="flex flex-col">
+              <label className="mb-2 font-medium">School Name</label>
+              <input
+                type="text"
+                name="schoolName"
+                value={formData?.schoolName}
+                onChange={handleInputChange}
+                className="border border-black p-3 rounded-md"
+                placeholder="School Name"
+              />
+            </div> */}
 
-            <div className="flex flex-col">
+            
+
+            {/* <div className="flex flex-col">
               <label className="mb-2 font-medium">Campus</label>
               <input
                 type="text"
@@ -152,7 +153,7 @@ const EditProfile = () => {
                 className="border border-black p-3 rounded-md"
                 placeholder="Campus"
               />
-            </div>
+            </div> */}
           </div>
 
           {error && <p className="text-red-500 mt-2">{error}</p>}
