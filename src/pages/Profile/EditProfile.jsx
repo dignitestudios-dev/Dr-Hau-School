@@ -27,7 +27,7 @@ const EditProfile = () => {
     // formDataToSend.append('schoolName', formData?.schoolName);
     // formDataToSend.append('programDep', formData?.programDep);
     formDataToSend.append('adminName', formData?.adminName);
-    formDataToSend.append('campus', formData?.campus);
+    // formDataToSend.append('campus', formData?.campus);
     if (profilePicture) {
       formDataToSend.append('profilePicture', profilePicture);
     }
@@ -118,7 +118,7 @@ const EditProfile = () => {
               />
             </div>
 
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <label className="mb-2 font-medium">Program Department</label>
               <input
                 type="text"
@@ -128,7 +128,7 @@ const EditProfile = () => {
                 className="border border-black p-3 rounded-md"
                 placeholder="Program Department"
               />
-            </div>
+            </div> */}
             {/* <div className="flex flex-col">
               <label className="mb-2 font-medium">School Name</label>
               <input
